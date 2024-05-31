@@ -25,10 +25,10 @@ public class SupportRequestService {
             Agent agent = availableAgent.get();
             agent.setCurrentLoad(agent.getCurrentLoad() + 1);
             agentRepository.updateAgent(agent);
-            return "Solicitação atribuída ao agente: " + agent.getName();
+            return "{\"status\": \"Ok\", \"message\": \"Solicitação atribuída ao agente: " + agent.getName() + "\"}";
         } else {
             requestQueue.add(request);
-            return "Todos os agentes estão ocupados. Sua solicitação está na fila.";
+            return "{\"status\": \"Queue\", \"message\": \"Todos os agentes estão ocupados. Sua solicitação está na fila.\"}";
         }
     }
 
